@@ -18,6 +18,7 @@ require_relative 'langs/go_helper'
 
 require_relative 'utils/git_helper'
 
+class IncorrectUsageError < StandardError; end
 module DockerJockey
   @@docker_host = nil
   @@volumes = nil
@@ -69,6 +70,7 @@ module DockerJockey
         helper.run(args, options)
       else
         puts "ERROR: Language not supported: #{lang}"
+        raise IncorrectUsageError
       end
     # rescue SystemExit, Interrupt => ex
       # puts "Caught #{ex}"

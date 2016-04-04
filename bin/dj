@@ -29,4 +29,8 @@ x = OptionParser.new do |opt|
 end
 x.order!
 
-DockerJockey.run(ARGV, options)
+begin
+  DockerJockey.run(ARGV, options)
+rescue IncorrectUsageError
+  puts x
+end
