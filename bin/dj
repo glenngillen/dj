@@ -33,4 +33,5 @@ begin
   DockerJockey.run(ARGV, options)
 rescue IncorrectUsageError
   puts x
+  exit(1)
 end
